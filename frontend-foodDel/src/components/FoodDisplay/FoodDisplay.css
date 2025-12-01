@@ -1,3 +1,5 @@
+@import "tailwindcss";
+
 .food-display{
     margin-top: 30px;
 }

@@ -56,7 +56,7 @@
 
 import React, { useState } from 'react';
 import './Navbar.css';
-import { assets } from '../../assets/assets';
+import { assets, menu_list, food_list } from "../../assets/assets";
 import { Link } from 'react-router-dom';
 
 const Navbar: React.FC = () => {
