@@ -149,9 +149,13 @@ import React, { useState } from 'react';
 import { assets } from "../../assets/assets";
 import { Link } from 'react-router-dom';
 
-const Navbar: React.FC = () => {
-    const [menu, setMenu] = useState<string>("home");
+interface NavbarProps {
+  setShowLogin: React.Dispatch<React.SetStateAction<boolean>>;
+}
 
+const Navbar: React.FC<NavbarProps> = ({setShowLogin}) => {
+    const [menu, setMenu] = useState<string>("home");
+    
     return (
         <div className="py-[20px] flex justify-between items-center">
 
@@ -177,35 +181,35 @@ const Navbar: React.FC = () => {
                     max-[750px]:hidden
                 "
             >
-                <Link to='/' style={{ textDecoration: 'none' }}>
-                    <li
-                        className={`${menu === "home" ? "pb-[2px] border-b-2 border-[#49557e]" : ""} cursor-pointer`}
-                        onClick={() => setMenu("home")}
-                    >
-                        Home
-                    </li>
+                
+                <Link
+                    to="/"
+                    className={`${menu === "home" ? "pb-[2px] border-b-2 border-[#49557e]" : ""} cursor-pointer`}
+                    onClick={() => setMenu("home")}
+                >
+                     Home
                 </Link>
 
-                <li
+                <a href='#explore-menu'
                     className={`${menu === "menu" ? "pb-[2px] border-b-2 border-[#49557e]" : ""} cursor-pointer`}
                     onClick={() => setMenu("menu")}
                 >
                     Menu
-                </li>
+                </a>
 
-                <li
+                <a href='#app-download'
                     className={`${menu === "mobile-app" ? "pb-[2px] border-b-2 border-[#49557e]" : ""} cursor-pointer`}
                     onClick={() => setMenu("mobile-app")}
                 >
                     Mobile-app
-                </li>
+                </a>
 
-                <li
+                <a href='#footer'
                     className={`${menu === "contact us" ? "pb-[2px] border-b-2 border-[#49557e]" : ""} cursor-pointer`}
                     onClick={() => setMenu("contact us")}
                 >
                     Contact Us
-                </li>
+                </a>
             </ul>
 
             {/* Right Section */}
@@ -240,7 +244,7 @@ const Navbar: React.FC = () => {
                     <div className="absolute min-w-[10px] min-h-[10px] bg-[tomato] rounded-[5px] top-[-8px] right-[-8px]"></div>
                 </div>
 
-                <button
+                <button onClick={()=>setShowLogin(true)}
                     className="
                         bg-transparent text-[16px] text-[#49557e] border border-[tomato] 
                         px-[30px] py-[10px] rounded-full cursor-pointer transition duration-300 hover:bg-[#fff4ff]
